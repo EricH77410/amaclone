@@ -3,7 +3,7 @@ import { useStateValue } from '../../StateProvider/StateProvider'
 import StarIcon from '@material-ui/icons/Star'
 import './Product.css'
 
-function Product({ title, price, image, rating }) {
+function Product({ title, price, image, rating, id }) {
   const [state, dispatch] = useStateValue()
 
   const addToBasket = () => {
@@ -14,19 +14,20 @@ function Product({ title, price, image, rating }) {
         image,
         price,
         rating,
+        id,
       },
     })
   }
 
   return (
-    <div className="product">
-      <div className="product__info">
+    <div className='product'>
+      <div className='product__info'>
         <p>{title}</p>
-        <p className="product__price">
+        <p className='product__price'>
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        <div className="product__rating">
+        <div className='product__rating'>
           {Array(rating)
             .fill()
             .map((_, i) => (
@@ -35,7 +36,7 @@ function Product({ title, price, image, rating }) {
         </div>
       </div>
 
-      <img src={image} alt="Product" />
+      <img src={image} alt='Product' />
       <button onClick={addToBasket}>Add to Basket</button>
     </div>
   )

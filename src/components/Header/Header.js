@@ -8,37 +8,39 @@ const Header = () => {
   const [{ basket }, dispatch] = useStateValue()
 
   return (
-    <div className="header">
-      <Link to="/">
+    <div className='header'>
+      <Link to='/'>
         <img
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-          alt="Logo"
-          className="header__logo"
+          src='http://pngimg.com/uploads/amazon/amazon_PNG11.png'
+          alt='Logo'
+          className='header__logo'
         />
       </Link>
 
-      <div className="header__search">
-        <input type="text" className="header__searchInput" />
-        <Search className="header__searchIcon" />
+      <div className='header__search'>
+        <input type='text' className='header__searchInput' />
+        <Search className='header__searchIcon' />
       </div>
 
-      <div className="header__nav">
-        <div className="header__option">
-          <span className="header__optionLineOne">Hello Rico</span>
-          <span className="header__optionLineTwo">Sign In</span>
+      <div className='header__nav'>
+        <Link to='/login'>
+          <div className='header__option'>
+            <span className='header__optionLineOne'>Hello Rico</span>
+            <span className='header__optionLineTwo'>Sign In</span>
+          </div>
+        </Link>
+        <div className='header__option'>
+          <span className='header__optionLineOne'>Returns</span>
+          <span className='header__optionLineTwo'>& Orders</span>
         </div>
-        <div className="header__option">
-          <span className="header__optionLineOne">Returns</span>
-          <span className="header__optionLineTwo">& Orders</span>
+        <div className='header__option'>
+          <span className='header__optionLineOne'>Your</span>
+          <span className='header__optionLineTwo'>Prime</span>
         </div>
-        <div className="header__option">
-          <span className="header__optionLineOne">Your</span>
-          <span className="header__optionLineTwo">Prime</span>
-        </div>
-        <Link to="/checkout">
-          <div className="header__optionBasket">
+        <Link to='/checkout'>
+          <div className='header__optionBasket'>
             <ShoppingBasket />
-            <span className="header__optionLineTwo header__basketCount">
+            <span className='header__optionLineTwo header__basketCount'>
               {basket?.length}
             </span>
           </div>
