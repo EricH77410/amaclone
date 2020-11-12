@@ -2,10 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useStateValue } from '../../StateProvider/StateProvider'
 import { Search, ShoppingBasket } from '@material-ui/icons'
+import { auth } from '../../firebase'
 import './Header.css'
 
 const Header = () => {
-  const [{ basket }, dispatch] = useStateValue()
+  const [{ basket, user }, dispatch] = useStateValue()
+
+  const handleAuth = () => {
+    if (user) {
+      auth.signOut()
+    }
+  }
 
   return (
     <div className='header'>
@@ -23,10 +30,14 @@ const Header = () => {
       </div>
 
       <div className='header__nav'>
-        <Link to='/login'>
-          <div className='header__option'>
-            <span className='header__optionLineOne'>Hello Rico</span>
-            <span className='header__optionLineTwo'>Sign In</span>
+        <Link to={!user && '/login'}>
+          <div className='header__option' onClick={handleAuth}>
+            <span className='header__optionLineOne'>
+              Hello {user ? user.email : 'Guest'}
+            </span>
+            <span className='header__optionLineTwo'>
+              {user ? 'Logout' : 'Sign In'}
+            </span>
           </div>
         </Link>
         <div className='header__option'>
